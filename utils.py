@@ -21,3 +21,10 @@ def load_notes():
   notes = "\n".join(notes_li)
 
   return notes
+
+def add_note_to_JSON(title, detail):
+  with open("static/data/notes.json", "+r") as file:
+    data = json.load(file)
+    data.append({ "titulo": title, "detalhes": detail })
+    file.seek(0)
+    json.dump(data, file, indent=4)
