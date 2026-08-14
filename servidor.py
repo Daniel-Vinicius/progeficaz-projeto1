@@ -8,6 +8,12 @@ app.static_folder = "static"
 def index():
     return render_template_string(views.index())
 
+@app.route('/delete/', defaults={'NOTA_ID': None})
+@app.route('/delete/<NOTA_ID>')
+def delete_note(NOTA_ID):
+    views.delete(NOTA_ID)
+    return redirect('/')
+
 @app.route('/submit', methods=['POST'])
 def submit_form():
     titulo = request.form.get('titulo')  # Obtém o valor do campo 'titulo'

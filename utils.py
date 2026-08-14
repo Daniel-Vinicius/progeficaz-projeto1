@@ -31,3 +31,12 @@ def add_note_toDB(title, detail):
 
   con.commit()
   con.close()
+
+def delete_note(id):
+  con = sqlite3.connect("banco.db")
+  cursor = con.cursor()
+
+  cursor.execute(f"DELETE FROM note WHERE id=?", id)
+
+  con.commit()
+  con.close()

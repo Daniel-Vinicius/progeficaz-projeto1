@@ -1,4 +1,9 @@
 <li>
-  <h3>{title}</h3>
-  <p>{details}</p>
+  <div>
+    <h3>{title}</h3>
+    <p>{details}</p>
+  </div>
+  <a href="/delete/{id}" name="delete_button">
+    <img src="{{{{ url_for('static', filename='img/delete-icon.png') }}}}" width="16px" height="16px">
+  </a>
 </li>
