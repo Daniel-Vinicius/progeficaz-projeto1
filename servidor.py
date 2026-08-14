@@ -14,6 +14,16 @@ def delete_note(NOTA_ID):
     views.delete(NOTA_ID)
     return redirect('/')
 
+@app.route('/update/', defaults={'NOTA_ID': None})
+@app.route('/update/<NOTA_ID>')
+def update_note(NOTA_ID):
+    return render_template_string(views.update_page(NOTA_ID))
+
+@app.route('/update/id=<NOTA_ID>&titulo=<NOTA_TITULO>&detalhes=<NOTA_DETALHES>', methods=['POST'])
+def update(NOTA_ID, NOTA_TITULO, NOTA_DETALHES):
+    views.update(NOTA_ID, NOTA_TITULO, NOTA_DETALHES)
+    return redirect('/')
+
 @app.route('/submit', methods=['POST'])
 def submit_form():
     titulo = request.form.get('titulo')  # Obtém o valor do campo 'titulo'

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Get-it</title>
+  <link rel="stylesheet" href="{{{{ url_for('static', filename='styles/getit.css') }}}}">
+  <script defer src="{{{{ url_for('static', filename='js/getit.js') }}}}"></script>
+</head>
+
+<body>
+
+  <img src="{{{{ url_for('static', filename='img/logo-getit.png') }}}}" width="200px">
+  <p>Como o Post-it, mas com outro verbo</p>
+  <form id="edit-form">
+    <div>
+      <label for="titulo">Título</label>
+      <input id="titulo" type="text" name="titulo" value="{defaultTitle}" />
+      <label for="detalhes" class="detail">Detalhes</label>
+      <textarea id="detalhes" name="detalhes" width="200px">{defaultDetail}</textarea>
+    </div>
+    <div>
+      <input type="submit" value="Salvar" />
+      <a href="/" class="btn">Cancelar</a>
+    </div>
+  </form>
+
+</body>
+
+</html>
