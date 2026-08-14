@@ -1,16 +1,8 @@
-import json
 import sqlite3
 
 def load_template(filename):
   arquivo = open(f'static/templates/{filename}')
   return arquivo.read()
-
-def load_data(filename):
-  arquivo = open(f'static/data/{filename}')
-  conteudo = arquivo.read()
-  decoder = json.decoder.JSONDecoder()
-  dicionario = decoder.decode(conteudo)
-  return dicionario
 
 def load_notes():
   con = sqlite3.connect("banco.db")
@@ -31,9 +23,11 @@ def load_notes():
 
   return notes
 
-def add_note_to_JSON(title, detail):
-  with open("static/data/notes.json", "+r") as file:
-    data = json.load(file)
-    data.append({ "titulo": title, "detalhes": detail })
-    file.seek(0)
-    json.dump(data, file, indent=4)
+def add_note_toDB(title, detail):
+  con = sqlite3.connect("banco.db")
+  cursor = con.cursor()
+  params = (title, detail)
+  cursor.execute(f"INSERT INTO note(title, content) VALUES (?, ?);", params)
+
+  con.commit()
+  con.close()
