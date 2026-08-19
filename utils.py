@@ -9,7 +9,7 @@ def load_notes():
   cursor = con.cursor()
   dbData = []
 
-  for row in cursor.execute("SELECT * FROM note"):
+  for row in cursor.execute("SELECT * FROM note ORDER BY favorite DESC"):
     dbData.append(row)
   con.close()
 
