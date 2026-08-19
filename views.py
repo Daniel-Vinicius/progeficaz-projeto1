@@ -1,4 +1,4 @@
-from utils import get_note, load_notes, load_template, add_note_toDB, delete_note, update_note
+from utils import get_note, load_notes, load_template, add_note_toDB, delete_note, update_note, toggle_fav_note
 
 def index():
     return load_template("index.html").format(notes=load_notes())
@@ -15,3 +15,6 @@ def update_page(id_nota):
 
 def update(id, titulo, detalhes):
     return update_note(id, titulo, detalhes)
+
+def favorite_note(id):
+    return toggle_fav_note(id)

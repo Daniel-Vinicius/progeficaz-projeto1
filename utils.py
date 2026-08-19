@@ -17,7 +17,7 @@ def load_notes():
   notes_li = []
 
   for note in dbData:
-    notes_li.append(NOTE_TEMPLATE.format(id=note[0], title=note[1], details=note[2]))
+    notes_li.append(NOTE_TEMPLATE.format(id=note[0], title=note[1], details=note[2], favorite=note[3]))
   notes = "\n".join(notes_li)
 
   return notes
@@ -60,6 +60,15 @@ def update_note(id, title, detail):
   print(params)
 
   cursor.execute(f"UPDATE note SET title = ?, content = ? WHERE id = ?;", params)
+
+  con.commit()
+  con.close()
+
+def toggle_fav_note(id):
+  con = sqlite3.connect("banco.db")
+  cursor = con.cursor()
+
+  cursor.execute(f"UPDATE note SET favorite = NOT favorite WHERE id = ?;", id)
 
   con.commit()
   con.close()

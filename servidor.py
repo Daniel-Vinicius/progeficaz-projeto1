@@ -14,6 +14,12 @@ def delete_note(NOTA_ID):
     views.delete(NOTA_ID)
     return redirect('/')
 
+@app.route('/favorite/', defaults={'NOTA_ID': None})
+@app.route('/favorite/<NOTA_ID>')
+def favorite_note_route(NOTA_ID):
+    views.favorite_note(NOTA_ID)
+    return redirect('/')
+
 @app.route('/update/', defaults={'NOTA_ID': None})
 @app.route('/update/<NOTA_ID>')
 def update_note(NOTA_ID):
