@@ -1,15 +1,17 @@
-<li class="card">
-  <div>
+<li>
+  <div class="info">
     <h3>{title}</h3>
     <p>{details}</p>
   </div>
-  <a href="/update/{id}" name="edit_button">
-    <img src="{{{{ url_for('static', filename='img/edit-icon.png') }}}}" width="16px" height="16px">
-  </a>
-  <a href="/favorite/{id}" name="favorite_button" class="un{favorite}">
-    <img src="{{{{ url_for('static', filename='img/filled-star.png') }}}}" width="16px" height="16px">
-  </a>
-  <a href="/delete/{id}" name="delete_button">
-    <img src="{{{{ url_for('static', filename='img/delete-icon.png') }}}}" width="16px" height="16px">
-  </a>
+  <div class="card">
+    <a href="/update/{id}" name="edit_button">
+      <img src="{{{{ url_for('static', filename='img/edit-icon.png') }}}}" width="16px" height="16px">
+    </a>
+    <a href="/favorite/{id}" name="favorite_button" class="un{favorite}">
+      <img src="{{{{ url_for('static', filename='img/filled-star.png') }}}}" width="16px" height="16px">
+    </a>
+    <a href="/delete/{id}" name="delete_button">
+      <img src="{{{{ url_for('static', filename='img/delete-icon.png') }}}}" width="16px" height="16px">
+    </a>
+  </div>
 </li>
