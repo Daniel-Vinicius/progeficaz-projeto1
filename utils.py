@@ -35,7 +35,7 @@ def delete_note(id):
   con = sqlite3.connect("banco.db")
   cursor = con.cursor()
 
-  cursor.execute(f"DELETE FROM note WHERE id=?", id)
+  cursor.execute(f"DELETE FROM note WHERE id=?", (id,))
 
   con.commit()
   con.close()
@@ -45,8 +45,8 @@ def get_note(id):
   cursor = con.cursor()
 
   note = None
-
-  for r in cursor.execute(f"SELECT * FROM note WHERE id=?", id):
+  print(id)
+  for r in cursor.execute(f"SELECT * FROM note WHERE id=?", (id,)):
     note = r
 
   con.commit()
@@ -68,7 +68,7 @@ def toggle_fav_note(id):
   con = sqlite3.connect("banco.db")
   cursor = con.cursor()
 
-  cursor.execute(f"UPDATE note SET favorite = NOT favorite WHERE id = ?;", id)
+  cursor.execute(f"UPDATE note SET favorite = NOT favorite WHERE id = ?;", (id,))
 
   con.commit()
   con.close()
