@@ -161,7 +161,7 @@ li p {
   color: #555;
 }
 
-.card {
+.cardDiv {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -169,6 +169,6 @@ li p {
   max-height: 40px;
 }
 
-.card a {
+.cardDiv a {
   margin-left: 8px;
 }
